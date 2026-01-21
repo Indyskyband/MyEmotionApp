@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Files</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        /* --- จัด layout ภายในการ์ด --- */
+        .upload-layout {
+            padding-top: 50px;
+            justify-content: flex-start; /* เริ่มจากด้านบน */
+        }
+
+        /* หัวข้อ "Files Upload" */
+        .upload-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        /* คำอธิบายยาวๆ */
+        .upload-desc {
+            font-size: 14px;
+            color: #555; /* สีเทาเข้ม */
+            text-align: center;
+            width: 80%;
+            line-height: 1.5;
+            margin-bottom: 60px; /* เว้นระยะห่างจากปุ่มบวก */
+        }
+
+        /* --- ปุ่มบวกวงกลม (พระเอกของเรา) --- */
+        .upload-circle-btn {
+            width: 100px;
+            height: 100px;
+            background-color: #1A1A1A; /* สีดำเกือบสนิท */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: transform 0.1s;
+        }
+
+        .upload-circle-btn:active {
+            transform: scale(0.95); /* กดแล้วย่อลงนิดนึง */
+        }
+
+        /* ข้อความใต้ปุ่มบวก */
+        .upload-label-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #000;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .upload-hint {
+            font-size: 14px;
+            color: #666;
+            font-weight: 400;
+        }
+
+        /* input file (ซ่อนไว้ ไม่ให้เห็น) */
+        #file-input {
+            display: none;
+        }
+
+            /* ปุ่ม Back ด้านล่าง */
+        .btn-back {
+            bottom: 40px !important;
+            
+            /* 🔥 สั่งบังคับให้ตัวหนังสืออยู่ตรงกลาง */
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            
+            /* 🔥 สั่งลบขีดเส้นใต้ */
+            text-decoration: none !important;
+            
+            /* สีตัวหนังสือ (เผื่อไว้ให้ชัวร์) */
+            color: #1A1A1A !important;
+            /* ใช้สไตล์เดียวกับ btn-start จาก style.css ได้เลย */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="card upload-layout">
+            
+            <h1 class="upload-title">Files Upload</h1>
+
+            <p class="upload-desc">
+                Add your file here, and you can upload<br>
+                up 5s maximum file size: 50 MB
+            </p>
+
+            <label for="file-input" class="upload-circle-btn">
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+            </label>
+            
+            <input type="file" id="file-input" accept="video/*,audio/*">
+
+            <div class="upload-label-text">Upload Files</div>
+            <div class="upload-hint">Tap to select files</div>
+
+            <a href="{{ url_for('home') }}" class="btn-start btn-back">
+                Back
+            </a>
+
+        </div>
+    </div>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Files</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .upload-layout {
+            padding-top: 50px;
+            justify-content: flex-start;
+        }
+
+        .upload-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 20px;
+        }
+
+        .upload-desc {
+            font-size: 14px;
+            color: #555;
+            text-align: center;
+            width: 80%;
+            line-height: 1.5;
+            margin-bottom: 60px;
+        }
+
+        .upload-circle-btn {
+            width: 100px;
+            height: 100px;
+            background-color: #1A1A1A;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: transform 0.1s;
+        }
+
+        .upload-circle-btn:active {
+            transform: scale(0.95);
+        }
+
+        .upload-label-text {
+            font-size: 22px;
+            font-weight: 700;
+            color: #000;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .upload-hint {
+            font-size: 14px;
+            color: #666;
+            font-weight: 400;
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        /* ปุ่ม Back (จัดกลาง + ไม่มีขีดเส้นใต้) */
+        .btn-back {
+            bottom: 40px !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            text-decoration: none !important;
+            color: #1A1A1A !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card upload-layout">
+            
+            <h1 class="upload-title">Files Upload</h1>
+
+            <p class="upload-desc">
+                Add your file here, and you can upload<br>
+                up 5s maximum file size: 50 MB
+            </p>
+
+            <label for="file-input" class="upload-circle-btn">
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+            </label>
+            
+            <input type="file" id="file-input" accept="video/*,audio/*">
+
+            <div class="upload-label-text">Upload Files</div>
+            <div class="upload-hint">Tap to select files</div>
+
+            <a href="{{ url_for('home') }}" class="btn-start btn-back">
+                Back
+            </a>
+
+        </div>
+    </div>
+
+   <script>
+        const fileInput = document.getElementById('file-input');
+        const labelText = document.querySelector('.upload-label-text');
+        const hintText = document.querySelector('.upload-hint');
+
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            
+            if (file) {
+                // สร้างตัวเล่นสื่อจำลอง (เช็กก่อนว่าเป็น Audio หรือ Video)
+                // ถ้าเป็นเสียงใช้ 'audio', ถ้าเป็นวิดีโอใช้ 'video'
+                const elementType = file.type.startsWith('audio') ? 'audio' : 'video';
+                const media = document.createElement(elementType);
+                
+                media.preload = 'metadata';
+
+                media.onloadedmetadata = function() {
+                    window.URL.revokeObjectURL(media.src);
+                    const duration = media.duration;
+
+                    // เช็กเวลา 5.5 วินาที
+                    if (duration > 5.5) {
+                        alert(`⚠️ File is too long (${duration.toFixed(1)}s)!\nPlease upload a file less than 5 seconds.`);
+                        fileInput.value = ""; // ลบไฟล์ทิ้ง
+                        labelText.innerText = "Upload Files";
+                        hintText.innerText = "Tap to select files";
+                    } else {
+                        // ✅ ผ่าน: โชว์ชื่อไฟล์
+                        labelText.innerText = file.name;
+                        hintText.innerText = "Ready to analyze!";
+                        console.log("File accepted:", file.name);
+                    }
+                }
+
+                media.src = URL.createObjectURL(file);
+            }
+        });
+    </script>
+
+</body>
+</html>

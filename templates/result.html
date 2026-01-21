@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        /* จัด Layout ภายในการ์ด */
+        .result-layout {
+            padding-top: 40px;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .result-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 30px;
+        }
+
+        /* รูป Emoji ตรงกลาง */
+        .result-emoji {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+        }
+
+        /* ข้อความผลลัพธ์ "Happy" */
+        .result-label {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1A1A1A;
+            margin-bottom: 10px;
+        }
+
+        /* ค่าความมั่นใจ */
+        .result-conf {
+            font-size: 20px;
+            color: #000;
+            font-weight: 500;
+            margin-bottom: 40px;
+        }
+
+        /* --- ปุ่มกด 3 ปุ่ม --- */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* ระยะห่างระหว่างปุ่ม */
+            width: 100%;
+            align-items: center;
+        }
+
+        .btn-result {
+            position: relative; /* ล้างค่า absolute เดิมของ btn-start */
+            bottom: auto;
+            width: 240px;
+            height: 55px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1A1A1A;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(255, 182, 185, 0.4);
+            
+            /* สีไล่ระดับเหมือนเดิม */
+            background: linear-gradient(90deg, #FFB6B9 0%, #FFDAC1 100%);
+            transition: transform 0.1s;
+        }
+
+        .btn-result:active {
+            transform: scale(0.95);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="card result-layout">
+            
+            <div class="result-title">Result</div>
+
+            <img src="{{ url_for('static', filename='emo_yellow.png') }}" class="result-emoji">
+
+            <div class="result-label">“Happy”</div>
+            <div class="result-conf">Confidence : 100%</div>
+
+            <div class="button-group">
+                <button class="btn-result">Save Result</button>
+                <a href="{{ url_for('graph_face') }}" class="btn-result">Show Graph</a>
+                <a href="{{ url_for('home') }}" class="btn-result">Go to Home</a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

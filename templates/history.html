@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        /* --- Override CSS เฉพาะหน้านี้ --- */
+        
+        .container {
+            justify-content: flex-start;
+        }
+
+        /* ปรับ Layout หลัก */
+        .card.history-layout {
+            background-color: transparent;
+            box-shadow: none;
+            
+            /* 🔥 1. บังคับให้กว้างเต็ม 100% ของจอมือถือ */
+            width: 100% !important; 
+            max-width: 100% !important;
+            
+            /* 🔥 2. สั่งให้ลูกๆ ยืดตัวออก (แก้ Align Items) */
+            align-items: stretch !important; 
+            
+            /* เว้นขอบซ้ายขวานิดเดียว (ลองปรับเลขนี้ดู ถ้าอยากให้ชิดกว่านี้) */
+            padding: 0 10px !important; 
+            
+            padding-top: 50px;
+            overflow-y: auto;
+            height: 100%;
+            padding-bottom: 100px;
+            box-sizing: border-box; 
+        }
+
+        .history-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #000;
+            text-align: center;
+            margin-bottom: 30px;
+            /* ต้องสั่ง width auto เพราะเราใช้ stretch แล้ว */
+            width: auto; 
+        }
+
+        /* --- รายการประวัติ --- */
+        .history-item {
+            background-color: #FFFFF5;
+            border-radius: 25px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.1s;
+            cursor: pointer;
+            
+            /* 🔥 3. บังคับความกว้างเต็มพื้นที่ padding */
+            width: 100% !important; 
+            box-sizing: border-box;
+            
+            /* (เผื่อไว้) ลบ margin ด้านข้างออกให้หมด */
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .history-item:active { transform: scale(0.98); }
+
+        .history-emo {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            margin-right: 20px;
+        }
+
+        .history-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .history-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .history-date {
+            font-size: 14px;
+            color: #888;
+            font-weight: 500;
+        }
+
+        /* --- เมนูด้านล่าง --- */
+        .bottom-nav {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 90px;
+            background-color: transparent;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 15px;
+            z-index: 50;
+        }
+
+        .nav-item {
+            color: #FFB6B9;
+            cursor: pointer;
+            transition: transform 0.2s;
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-item:hover { transform: scale(1.1); }
+
+        .nav-item.active {
+            color: #F4526A;
+            background-color: #FFFFFF;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="card history-layout">
+            
+            <div class="history-title">History</div>
+
+            <div class="history-item">
+                <img src="{{ url_for('static', filename='emo_green.png') }}" class="history-emo">
+                <div class="history-info">
+                    <div class="history-name">Neural</div>
+                    <div class="history-date">Oct 12, 2025</div>
+                </div>
+            </div>
+
+            <div class="history-item">
+                <img src="{{ url_for('static', filename='emo_yellow.png') }}" class="history-emo">
+                <div class="history-info">
+                    <div class="history-name">Happy</div>
+                    <div class="history-date">Oct 12, 2025</div>
+                </div>
+            </div>
+
+            <div class="history-item">
+                <img src="{{ url_for('static', filename='emo_purple.png') }}" class="history-emo">
+                <div class="history-info">
+                    <div class="history-name">Sad</div>
+                    <div class="history-date">Oct 14, 2025</div>
+                </div>
+            </div>
+
+            <div class="history-item">
+                <img src="{{ url_for('static', filename='emo_red.png') }}" class="history-emo">
+                <div class="history-info">
+                    <div class="history-name">Angry</div>
+                    <div class="history-date">Oct 16, 2025</div>
+                </div>
+            </div>
+
+             <div class="history-item">
+                <img src="{{ url_for('static', filename='emo_purple.png') }}" class="history-emo">
+                <div class="history-info">
+                    <div class="history-name">Sad</div>
+                    <div class="history-date">Oct 20, 2025</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bottom-nav">
+            <a href="{{ url_for('home') }}" class="nav-item">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </a>
+            
+            <div class="nav-item active">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            
+            <div class="nav-item">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

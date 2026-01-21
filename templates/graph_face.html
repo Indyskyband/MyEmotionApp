@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Graph</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        /* จัด Layout ภายในการ์ด */
+        .graph-layout {
+            padding-top: 40px;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .graph-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 60px; /* เว้นห่างจากกราฟหน่อย */
+        }
+
+        /* --- ส่วนของกราฟจำลอง (CSS Drawing) --- */
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .bars-wrapper {
+            display: flex;
+            align-items: flex-end; /* จัดให้แท่งติดพื้นด้านล่าง */
+            gap: 15px; /* ระยะห่างระหว่างแท่ง */
+            border-bottom: 5px solid #1A1A1A; /* เส้นแกน X สีดำหนา */
+            padding-bottom: 0px;
+            margin-bottom: 10px;
+        }
+
+        /* แท่งกราฟ */
+        .bar {
+            width: 40px;
+            background-color: #FFD166; /* สีเหลือง */
+            border: 3px solid #1A1A1A; /* ขอบดำ */
+            border-bottom: none; /* ไม่เอาขอบล่างเพราะทับกับแกน */
+        }
+
+        /* กำหนดความสูงของแต่ละแท่ง */
+        .bar-1 { height: 120px; } /* แท่งสูง (Happy) */
+        .bar-2 { height: 80px; }  /* แท่งเตี้ย (Sad) */
+
+        .labels-wrapper {
+            display: flex;
+            gap: 25px; /* ระยะห่างตัวหนังสือ */
+        }
+
+        .chart-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* --- ปุ่มกด 3 ปุ่ม (ใช้สไตล์เดียวกับ Result) --- */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .btn-graph {
+            width: 240px;
+            height: 55px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #1A1A1A;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(255, 182, 185, 0.4);
+            background: linear-gradient(90deg, #FFB6B9 0%, #FFDAC1 100%);
+            transition: transform 0.1s;
+        }
+
+        .btn-graph:active { transform: scale(0.95); }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="card graph-layout">
+            
+            <div class="graph-title">Face</div>
+
+            <div class="chart-container">
+                <div class="bars-wrapper">
+                    <div class="bar bar-1"></div> <div class="bar bar-2"></div> </div>
+                <div class="labels-wrapper">
+                    <div class="chart-label">Happy</div>
+                    <div class="chart-label">Sad</div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <a href="{{ url_for('graph_voice') }}" class="btn-graph">Go to Voice</a>
+                
+                <a href="{{ url_for('result') }}" class="btn-graph">Back to Result</a>
+                
+                <a href="{{ url_for('home') }}" class="btn-graph">Go to Home</a>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

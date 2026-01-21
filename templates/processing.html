@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processing...</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        /* --- ปรับแต่งเฉพาะหน้านี้ (Override) --- */
+        
+        /* เปลี่ยนสีพื้นหลัง Container ให้เป็น Gradient พีชๆ เหมือนในรูป */
+        .container {
+            background: linear-gradient(180deg, #FFE5D9 0%, #FFD1C1 100%) !important;
+            justify-content: center; /* จัดทุกอย่างให้อยู่กลางจอ */
+        }
+
+        /* ซ่อนการ์ดสีขาว (เพราะหน้านี้ไม่มีการ์ด) */
+        .card {
+            background-color: transparent !important;
+            box-shadow: none !important;
+            justify-content: center;
+            height: auto; /* ปรับความสูงตามเนื้อหา */
+        }
+
+        /* --- ตัวหมุน (Spinner) --- */
+        .spinner-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 40px;
+        }
+
+        .spinner-circle {
+            width: 100%;
+            height: 100%;
+            border: 4px solid #1A1A1A; /* เส้นวงกลมสีดำ */
+            border-radius: 50%;
+            opacity: 1;
+            box-sizing: border-box;
+        }
+
+        /* จุดวงกลมเล็กๆ ที่วิ่งรอบๆ */
+        .spinner-dot {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background-color: #1A1A1A;
+            border-radius: 50%;
+            transform-origin: 0 40px; /* จุดหมุน (รัศมีเท่ากับครึ่งหนึ่งของ spinner) */
+            animation: spin 1.5s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translateX(-50%) rotate(0deg); }
+            100% { transform: translateX(-50%) rotate(360deg); }
+        }
+
+        /* --- ข้อความ --- */
+        .process-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #000;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .process-subtitle {
+            font-size: 16px;
+            color: #555;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="card">
+            
+            <div class="spinner-container">
+                <div class="spinner-circle"></div>
+                <div class="spinner-dot"></div>
+            </div>
+
+            <div class="process-title">Start Processing</div>
+            <div class="process-subtitle">Please wait...</div>
+
+        </div>
+
+    </div>
+
+    <script>
+        setTimeout(function() {
+            // เมื่อครบ 4 วินาที ให้วิ่งไปหน้า Result ทันที
+            window.location.href = "{{ url_for('result') }}";
+        }, 4000);
+    </script>
+
+</body>
+</html>

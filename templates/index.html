@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scene Emotional Detected</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        
+
+        <div class="card">
+            
+            <div class="header-text">
+                <h1>Scene Emotional<br>Detected</h1>
+            </div>
+
+            <div class="center-image-area">
+                <img src="{{ url_for('static', filename='emo_blue.png') }}" class="emoji-blue">
+            </div>
+
+            <p class="subtitle">
+                “AI for classify the<br>
+                scene emotional<br>
+                by voice recognition”
+            </p>
+
+            <a href="{{ url_for('home') }}" class="btn-start" style="text-decoration: none; display: flex; justify-content: center; align-items: center;">Start</a>
+    
+            
+            <img src="{{ url_for('static', filename='emo_orange.png') }}" class="float-emo emo-orange">
+            <img src="{{ url_for('static', filename='emo_purple.png') }}" class="float-emo emo-purple">
+            <img src="{{ url_for('static', filename='emo_yellow.png') }}" class="float-emo emo-yellow">
+            <img src="{{ url_for('static', filename='emo_red.png') }}" class="float-emo emo-red">
+            <img src="{{ url_for('static', filename='emo_green.png') }}" class="emoji-green-corner">
+        </div>
+    </div>
+
+</body>
+</html>

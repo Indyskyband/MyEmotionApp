@@ -1,0 +1,195 @@
+/* --- ชุดสี --- */
+:root {
+    --bg-peach: #FFE5C1;
+    --card-cream: #FFF8E7;
+    --btn-pink: #FFB6B9;
+    --btn-yellow: #FFD180;
+    --text-black: #000000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-peach);
+    height: 100dvh; /* add d */
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- การ์ดหลัก (ค่าเริ่มต้นสำหรับมือถือทั่วไป) --- */
+.card {
+    background-color: var(--card-cream);
+    width: 88%;          /* กว้างเกือบเต็มจอ */
+    height: 85%;         /* สูงเกือบเต็มจอ */
+    max-width: 400px;    /* ล็อกความกว้างสูงสุด */
+    max-height: 800px;   /* ล็อกความสูงสูงสุด */
+    
+    border-radius: 40px;
+    padding: 20px 10px;
+    
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;        /* บังคับให้อยู่กลาง */
+    
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        /* ตัดส่วนเกินทิ้ง */
+}
+
+/* --- ส่วนประกอบภายใน --- */
+.header-text {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    z-index: 10;
+}
+
+.header-text h1 {
+    font-size: 34px;     /* ขนาดปกติ */
+    font-weight: 900;
+    color: var(--text-black);
+    line-height: 1.2;
+}
+
+.center-image-area {
+    margin: 20px 0;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+}
+
+.emoji-blue {
+    width: 120px;        /* ขนาดปกติ */
+}
+
+.subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    color: #1A1A1A;
+    line-height: 1.5;
+    margin-top: 20px;
+    z-index: 10;
+    width: 90%;
+}
+
+.btn-start {
+    background: linear-gradient(90deg, var(--btn-pink) 0%, var(--btn-yellow) 100%);
+    width: 80%;
+    padding: 16px 0;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    position: absolute;
+    bottom: 50px;
+    z-index: 100;
+    box-shadow: 0 5px 15px rgba(255, 182, 185, 0.5);
+}
+
+/* --- รูปตกแต่ง (ตำแหน่งปกติ) --- */
+.float-emo { position: absolute; }
+
+.emo-orange {
+    width: 130px;
+    top: 120px;
+    left: -45px;
+    transform: rotate(-15deg);
+    z-index: 1;
+}
+
+.emo-purple {
+    width: 140px;
+    top: 130px;
+    right: -50px;
+    transform: rotate(15deg);
+    z-index: 1;
+}
+
+.emo-yellow {
+    width: 110px;
+    bottom: 150px;
+    left: -10px;
+    z-index: 5;
+}
+
+.emo-red {
+    width: 100px;
+    bottom: 130px;
+    right: -10px;
+    transform: rotate(-10deg);
+    z-index: 5;
+}
+
+.emoji-green-corner {
+    position: absolute;
+    width: 130px;
+    bottom: -40px;
+    left: -40px;
+    transform: rotate(-20deg);
+    z-index: 15;
+}
+
+/* =========================================
+   MEDIA QUERY: สำหรับมือถือจอเล็ก (เช่น iPhone SE, 12 Mini)
+   หรือหน้าจอที่ความสูงน้อยกว่า 700px
+   ========================================= */
+@media (max-width: 380px), (max-height: 700px) {
+    
+    .card {
+        padding: 20px 15px; /* ลดพื้นที่ว่างขอบการ์ดลง */
+    }
+
+    .header-text {
+        margin-top: 20px;   /* ขยับหัวข้อขึ้น */
+        margin-bottom: 10px;
+    }
+
+    .header-text h1 {
+        font-size: 28px;    /* ลดขนาดหัวข้อลง */
+    }
+
+    .emoji-blue {
+        width: 100px;       /* ลดขนาดรูปกลาง */
+    }
+
+    .subtitle {
+        font-size: 16px;    /* ลดขนาดคำบรรยาย */
+        margin-top: 10px;
+    }
+
+    .btn-start {
+        padding: 14px 0;
+        font-size: 18px;    /* ปุ่มเล็กลงหน่อย */
+        bottom: 30px;       /* ขยับปุ่มลงต่ำอีกนิด */
+    }
+
+    /* ปรับ Emoji ตกแต่งให้เล็กลง จะได้ไม่บังตัวหนังสือ */
+    .emo-orange { width: 100px; top: 40px; left: -30px; }
+    .emo-purple { width: 110px; top: 50px; right: -30px; }
+    .emo-yellow { width: 90px; bottom: 100px; }
+    .emo-red    { width: 80px; bottom: 90px; }
+    .emoji-green-corner { width: 100px; bottom: -30px; left: -30px; }
+
+}
